@@ -47,3 +47,12 @@ _print(rms_norm)
 _print(x)
 
 # bro i am still confused on how to intuitively think about when is it variable method (like x.mean(...)), when is it torch method (like torch.rsqrt(...)?
+
+def forward(self, x):
+    input_dtype = x.dtype
+    
+    x_fp32   = x.to(torch.float32)
+    variance = x_fp32.pow(2).mean(dim=-1, keepdim=True)
+    x_norm   = x_fp32 * torch.sqrt(variance + self.eps)
+
+    return (x_norm * self.weight).to(input_dtype) 
