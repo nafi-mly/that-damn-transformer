@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 
-from rope_from_scratch import RoPEEmbedding
-from causal_attention import CausalSelfAttention
+from _02_rope_from_scratch import RoPEEmbedding
+from _01_causal_attention import CausalSelfAttention
 
 
 class RMSNorm(nn.Module):
